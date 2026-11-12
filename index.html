@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wolfgun Outposts | Expedition Hospitality &amp; Luxury Stays in Tanzania</title>
+  <meta name="description" content="Where the trail ends, true luxury begins. Curated sanctuaries across Ngurdoto, Ngorongoro, Serengeti, Zanzibar, and Dar es Salaam by Wolfgun Expedition." />
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            sand: {
+              50: '#F7F4EE',
+              100: '#EFEAE0',
+              200: '#E3DCD0',
+              300: '#D1C7B7',
+            },
+            charcoal: {
+              950: '#141513',
+              900: '#1C1E1B',
+              800: '#2A2D28',
+              700: '#454942',
+            },
+            forest: {
+              950: '#121B17',
+              900: '#17231E',
+              800: '#1F2E27',
+              700: '#2A3E35',
+            },
+            gold: {
+              300: '#DFC38D',
+              400: '#CCA969',
+              500: '#B89352',
+              600: '#9A783C',
+              700: '#7B5E2D',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom scrollbar & smooth view transitions */
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: #F7F4EE; }
+    ::-webkit-scrollbar-thumb { background: rgba(184, 147, 82, 0.45); border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(184, 147, 82, 0.8); }
+
+    .view-panel {
+      animation: editorialFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes editorialFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    body.modal-open { overflow: hidden; }
+  </style>
+</head>
+<body class="bg-sand-50 text-charcoal-950 font-sans antialiased selection:bg-gold-500 selection:text-white flex flex-col min-h-screen">
+
+  <!-- ===================================================================== -->
+  <!-- STICKY GLASSMORPHIC HEADER & SVG MONOGRAM LOGO                        -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-sand-50/90 border-b border-sand-200/90 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Custom Minimalist SVG Geometric Monogram ('WO') + Brand Lockup -->
+        <button type="button" onclick="switchView('home')" class="flex items-center gap-3.5 text-left group focus:outline-none">
+          <div class="w-11 h-11 rounded-xl bg-forest-800 flex items-center justify-center shadow-sm group-hover:bg-forest-900 transition-colors shrink-0">
+            <svg class="w-8 h-8" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Outer thin antique gold architectural diamond/frame -->
+              <rect x="4" y="4" width="32" height="32" rx="4" stroke="#B89352" stroke-width="1.2" />
+              <path d="M20 2L38 20L20 38L2 20L20 2Z" stroke="#B89352" stroke-width="0.75" stroke-opacity="0.55" />
+              <!-- Monogram WO -->
+              <text x="20" y="24" text-anchor="middle" fill="#F7F4EE" font-family="'Cormorant Garamond', Georgia, serif" font-weight="700" font-size="13.5" letter-spacing="0.5">WO</text>
+            </svg>
+          </div>
+          <div>
+            <span class="block font-serif text-xl sm:text-2xl font-bold tracking-[0.06em] text-charcoal-950 leading-none">
+              WOLFGUN OUTPOSTS
+            </span>
+            <span class="block text-[9.5px] sm:text-[10px] uppercase tracking-[0.24em] text-gold-600 font-semibold mt-1">
+              BY WOLFGUN EXPEDITION
+            </span>
+          </div>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-1.5" aria-label="Primary Navigation">
+          <button type="button" data-nav="home" onclick="switchView('home')" class="nav-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-colors">Home</button>
+          <button type="button" data-nav="stays" onclick="switchView('stays')" class="nav-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-colors">Stays &amp; Territory</button>
+          <button type="button" data-nav="about" onclick="switchView('about')" class="nav-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-colors">About</button>
+          <button type="button" data-nav="enquire" onclick="switchView('enquire')" class="nav-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-colors">Enquire</button>
+        </nav>
+
+        <!-- Right Action Controls -->
+        <div class="flex items-center gap-2.5">
+          <button
+            type="button"
+            onclick="switchView('enquire')"
+            class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-sand-50 border border-gold-500/40 font-semibold text-sm transition-all shadow-sm"
+          >
+            <span>Concierge Desk</span>
+            <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Trigger -->
+          <button
+            type="button"
+            id="mobile-menu-open"
+            onclick="toggleDrawer(true)"
+            aria-label="Open navigation menu"
+            class="md:hidden p-3 rounded-xl border border-sand-300 bg-sand-100/80 text-charcoal-950 hover:border-gold-500 transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- MOBILE NAVIGATION DRAWER                                              -->
+  <!-- ===================================================================== -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden md:hidden" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div onclick="toggleDrawer(false)" class="fixed inset-0 bg-charcoal-950/70 backdrop-blur-sm transition-opacity"></div>
+    <div class="fixed inset-y-0 right-0 w-full max-w-xs bg-sand-50 border-l border-sand-200 shadow-2xl flex flex-col justify-between p-6 overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-5 border-b border-sand-200">
+          <div>
+            <span class="font-serif text-lg font-bold tracking-wider text-charcoal-950 block">WOLFGUN OUTPOSTS</span>
+            <span class="text-[9.5px] uppercase tracking-[0.2em] text-gold-600 font-semibold">By Wolfgun Expedition</span>
+          </div>
+          <button type="button" onclick="toggleDrawer(false)" aria-label="Close menu" class="p-2.5 rounded-xl border border-sand-300 bg-sand-100 text-charcoal-950">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <nav class="mt-6 flex flex-col gap-2">
+          <button type="button" data-mobile-nav="home" onclick="switchView('home')" class="mobile-nav-btn w-full text-left px-4 py-3.5 rounded-xl text-base font-medium transition-colors">Home</button>
+          <button type="button" data-mobile-nav="stays" onclick="switchView('stays')" class="mobile-nav-btn w-full text-left px-4 py-3.5 rounded-xl text-base font-medium transition-colors">Stays &amp; Territory</button>
+          <button type="button" data-mobile-nav="about" onclick="switchView('about')" class="mobile-nav-btn w-full text-left px-4 py-3.5 rounded-xl text-base font-medium transition-colors">About Kingsley &amp; Ethos</button>
+          <button type="button" data-mobile-nav="enquire" onclick="switchView('enquire')" class="mobile-nav-btn w-full text-left px-4 py-3.5 rounded-xl text-base font-medium transition-colors">Enquire &amp; Concierge</button>
+          <button type="button" onclick="toggleDrawer(false); openPrivacyModal();" class="w-full text-left px-4 py-3 rounded-xl text-sm font-medium text-charcoal-700 hover:bg-sand-100">Privacy &amp; Sample Notice</button>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-sand-200 space-y-3">
+        <a
+          href="https://wa.me/255742098355?text=Hello%20Kingsley%2C%20I%20would%20like%20to%20enquire%20about%20Wolfgun%20Outposts."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-forest-800 text-sand-50 border border-gold-500/40 font-semibold text-sm shadow-sm"
+        >
+          <span>WhatsApp Concierge</span>
+          <span class="text-gold-400">↗</span>
+        </a>
+        <p class="text-[11px] text-center text-charcoal-700">
+          Direct Line: +255 742 098 355
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MAIN CONTENT AREA (SINGLE-PAGE VIEW SWITCHER)                         -->
+  <!-- ===================================================================== -->
+  <main class="flex-grow">
+
+    <!-- =================================================================== -->
+    <!-- VIEW 1: HOME                                                        -->
+    <!-- =================================================================== -->
+    <section id="view-home" class="view-panel">
+      <!-- High-Contrast Editorial Hero -->
+      <div class="relative overflow-hidden bg-forest-950 text-sand-50">
+        <!-- Background Hero Image with Fallback -->
+        <img
+          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1920&q=85"
+          onerror="this.onerror=null;this.src='https://placehold.co/1600x900/1F2E27/B89352?text=Wolfgun+Outposts+%E2%80%A2+Tanzania';"
+          alt="Golden savannah horizon and misty mountain silhouette in Tanzania"
+          class="absolute inset-0 w-full h-full object-cover object-center opacity-55"
+        />
+        <!-- Multi-layered Luxury Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-charcoal-950/95 via-charcoal-950/75 to-forest-950/45"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950/80 via-transparent to-charcoal-950/30"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
+          <div class="max-w-2xl space-y-6">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-forest-900/90 border border-gold-500/50 backdrop-blur-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+              <span class="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-300">
+                TANZANIA • EXPEDITION HOSPITALITY &amp; STAYS
+              </span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-[64px] font-semibold tracking-tight leading-[1.06] text-sand-50">
+              Where the Trail Ends, <span class="italic font-normal text-gold-400">True Luxury Begins.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-sand-200/90 leading-relaxed font-light max-w-xl">
+              Curated sanctuaries bridging East Africa’s wild expedition corridors with private forest retreats, savannah outposts, and coastal villas that feel unmistakably like home.
+            </p>
+
+            <!-- Dual Thumb-Friendly CTAs -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-3">
+              <button
+                type="button"
+                onclick="switchView('stays')"
+                class="px-7 py-4 rounded-xl bg-gold-500 hover:bg-gold-400 text-charcoal-950 font-bold text-sm sm:text-base transition-all shadow-lg flex items-center justify-center gap-2.5"
+              >
+                <span>Explore Stays</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <a
+                href="https://wa.me/255742098355?text=Hello%20Kingsley%2C%20I%20would%20like%20to%20speak%20with%20the%20Wolfgun%20Outposts%20concierge."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-7 py-4 rounded-xl bg-forest-900/85 hover:bg-forest-800 text-sand-50 border border-gold-500/45 backdrop-blur-md font-semibold text-sm sm:text-base transition-all flex items-center justify-center gap-2.5"
+              >
+                <span>WhatsApp Concierge</span>
+                <span class="text-gold-400 text-xs">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Preview Strip: The 5 Signature Regions -->
+      <div class="border-b border-sand-200 bg-sand-100/75">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+            <span class="text-xs font-bold uppercase tracking-[0.22em] text-gold-700">Signature Portfolio Corridors</span>
+            <button type="button" onclick="switchView('stays')" class="text-xs font-semibold text-forest-800 hover:text-gold-600 inline-flex items-center gap-1 transition-colors self-start sm:self-auto">
+              <span>View all 5 sanctuaries</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+            <!-- Region 1 -->
+            <button type="button" onclick="jumpToStay('ngurdoto-colobus')" class="text-left p-4 rounded-2xl bg-sand-50 border border-sand-200 hover:border-gold-500 transition-all group shadow-xs">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-gold-600 block">01 • Northern Circuit</span>
+              <span class="font-serif text-xl font-bold text-charcoal-950 group-hover:text-forest-800 block mt-1">Arusha / Ngurdoto</span>
+              <span class="text-xs text-charcoal-700 block mt-1">Crater Rim &amp; Colobus Canopy</span>
+            </button>
+
+            <!-- Region 2 -->
+            <button type="button" onclick="jumpToStay('ngorongoro-highland')" class="text-left p-4 rounded-2xl bg-sand-50 border border-sand-200 hover:border-gold-500 transition-all group shadow-xs">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-gold-600 block">02 • Northern Circuit</span>
+              <span class="font-serif text-xl font-bold text-charcoal-950 group-hover:text-forest-800 block mt-1">Ngorongoro</span>
+              <span class="text-xs text-charcoal-700 block mt-1">Highland Mist &amp; Cedar Forest</span>
+            </button>
+
+            <!-- Region 3 -->
+            <button type="button" onclick="jumpToStay('serengeti-savannah')" class="text-left p-4 rounded-2xl bg-sand-50 border border-sand-200 hover:border-gold-500 transition-all group shadow-xs">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-gold-600 block">03 • Northern Circuit</span>
+              <span class="font-serif text-xl font-bold text-charcoal-950 group-hover:text-forest-800 block mt-1">Serengeti</span>
+              <span class="text-xs text-charcoal-700 block mt-1">Endless Savannah &amp; Migration</span>
+            </button>
+
+            <!-- Region 4 -->
+            <button type="button" onclick="jumpToStay('zanzibar-cliff')" class="text-left p-4 rounded-2xl bg-sand-50 border border-sand-200 hover:border-gold-500 transition-all group shadow-xs">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-gold-600 block">04 • Coast &amp; Islands</span>
+              <span class="font-serif text-xl font-bold text-charcoal-950 group-hover:text-forest-800 block mt-1">Zanzibar</span>
+              <span class="text-xs text-charcoal-700 block mt-1">Coral Cliff Lodge &amp; Reef</span>
+            </button>
+
+            <!-- Region 5 -->
+            <button type="button" onclick="jumpToStay('dar-seaview')" class="text-left p-4 rounded-2xl bg-sand-50 border border-sand-200 hover:border-gold-500 transition-all group shadow-xs sm:col-span-2 lg:col-span-1">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-gold-600 block">05 • Coast &amp; Islands</span>
+              <span class="font-serif text-xl font-bold text-charcoal-950 group-hover:text-forest-800 block mt-1">Dar es Salaam</span>
+              <span class="text-xs text-charcoal-700 block mt-1">Msasani Sea-View Villa &amp; BNB</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Asymmetric Magazine Editorial Preview + Quick Philosophy Banner -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-20">
+        <!-- Asymmetric Magazine Feature -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          <div class="lg:col-span-7 relative rounded-2xl overflow-hidden shadow-lg border border-sand-200 bg-forest-900">
+            <img
+              src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1400&q=85"
+              onerror="this.onerror=null;this.src='https://placehold.co/1200x800/1F2E27/B89352?text=Ngurdoto+Crater+Forest+Canopy';"
+              alt="Misty rainforest canopy at Ngurdoto Crater in Arusha National Park"
+              class="w-full h-[340px] sm:h-[460px] object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <span class="inline-block px-2.5 py-1 rounded-md bg-gold-500 text-charcoal-950 text-[10px] font-bold uppercase tracking-wider mb-2">
+                  SAMPLE LISTING • VERIFYING RATES
+                </span>
+                <p class="font-serif text-2xl sm:text-3xl font-semibold text-sand-50">Ngurdoto Crater — Colobus Sanctuary</p>
+                <p class="text-xs text-sand-200">Arusha National Park, Tanzania</p>
+              </div>
+              <button type="button" onclick="openInspectModal('ngurdoto-colobus')" class="px-4 py-2.5 rounded-xl bg-sand-50/95 hover:bg-white text-charcoal-950 font-semibold text-xs transition-colors">
+                Inspect Sanctuary →
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 space-y-5">
+            <span class="text-xs font-bold uppercase tracking-[0.22em] text-gold-600">The Wolfgun Standard</span>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-charcoal-950 leading-[1.12]">
+              From Crater Mist to Ocean Horizon.
+            </h2>
+            <p class="text-sm sm:text-base text-charcoal-700 leading-relaxed">
+              Every outpost in our portfolio is selected to complement the rhythm of an East African journey—combining restorative sleep, soulful local dining, and architectural calm after days spent in the wild.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-3">
+              <button type="button" onclick="switchView('stays')" class="px-6 py-3.5 rounded-xl bg-forest-800 hover:bg-forest-700 text-sand-50 font-semibold text-sm transition-colors">
+                Browse Portfolio
+              </button>
+              <button type="button" onclick="switchView('about')" class="px-6 py-3.5 rounded-xl border border-sand-300 bg-sand-100 hover:border-gold-500 text-charcoal-950 font-semibold text-sm transition-colors">
+                Read Our Story
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Philosophy Banner ('Home Away From Home' Ethos) -->
+        <div class="rounded-3xl bg-forest-800 text-sand-50 p-8 sm:p-12 lg:p-14 border border-gold-500/35 relative overflow-hidden shadow-xl">
+          <div class="max-w-3xl space-y-4 relative z-10">
+            <span class="text-xs font-bold uppercase tracking-[0.24em] text-gold-400">
+              Our Founding Philosophy
+            </span>
+            <blockquote class="font-serif italic text-2xl sm:text-3xl lg:text-4xl font-normal leading-snug text-sand-50">
+              “Luxury and true adventure aren’t defined only by where you travel—they live in where you rest your head, the food at your table, and the quiet comfort waiting for you after the trail ends.”
+            </blockquote>
+            <div class="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-sand-50/15">
+              <p class="text-xs sm:text-sm text-sand-200">
+                <strong class="text-gold-400 font-semibold">Kingsley</strong> — Founder, Wolfgun Outposts &amp; <a href="https://wolfgunexpedition.com" target="_blank" rel="noopener noreferrer" class="underline decoration-gold-400 hover:text-white">Wolfgun Expedition</a>
+              </p>
+              <button type="button" onclick="switchView('about')" class="text-xs font-bold uppercase tracking-wider text-gold-400 hover:text-gold-300 transition-colors">
+                Explore Full Ethos →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 2: STAYS & TERRITORY (5 PORTFOLIO CARDS + REGION FILTER TABS)  -->
+    <!-- =================================================================== -->
+    <section id="view-stays" class="view-panel hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+        <!-- Section Header -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-sand-200">
+          <div class="max-w-2xl">
+            <span class="text-xs font-bold uppercase tracking-[0.22em] text-gold-600">Curated Portfolio • Tanzania</span>
+            <h1 class="font-serif text-4xl sm:text-5xl font-bold text-charcoal-950 mt-2">
+              Stays &amp; Territory
+            </h1>
+            <p class="text-sm sm:text-base text-charcoal-700 mt-3 leading-relaxed">
+              Five signature sanctuaries spanning Tanzania’s Northern Safari Circuit and Indian Ocean coastline. All sample listings reflect active ground verification—request a private rate sheet directly from Kingsley.
+            </p>
+          </div>
+
+          <!-- Region Filter Tabs -->
+          <div class="flex flex-wrap items-center gap-2" role="tablist" aria-label="Filter stays by region">
+            <button type="button" onclick="filterPortfolio('All')" data-region="All" class="region-tab px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+              All (5)
+            </button>
+            <button type="button" onclick="filterPortfolio('Northern Circuit')" data-region="Northern Circuit" class="region-tab px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+              Northern Circuit (3)
+            </button>
+            <button type="button" onclick="filterPortfolio('Coast & Islands')" data-region="Coast & Islands" class="region-tab px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+              Coast &amp; Islands (2)
+            </button>
+          </div>
+        </div>
+
+        <!-- Asymmetric Editorial Cards Grid -->
+        <div id="portfolio-grid" class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 3: ABOUT (FOUNDER NARRATIVE & 3 TRUST PILLARS)                 -->
+    <!-- =================================================================== -->
+    <section id="view-about" class="view-panel hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <!-- Left Editorial Column -->
+          <div class="lg:col-span-7 space-y-6">
+            <span class="text-xs font-bold uppercase tracking-[0.24em] text-gold-600">
+              Founder Story • Wolfgun Outposts
+            </span>
+            <h1 class="font-serif text-4xl sm:text-5xl lg:text-[52px] font-bold text-charcoal-950 leading-[1.08]">
+              Beyond the Destination: <span class="italic font-normal text-forest-800">A Home Away From Home</span>
+            </h1>
+
+            <div class="p-6 sm:p-8 rounded-2xl bg-sand-100 border-l-4 border-gold-500 space-y-4 shadow-xs">
+              <p class="text-base sm:text-lg text-charcoal-900 leading-relaxed font-normal">
+                “When I looked closely at the world of tourism, one truth stood out: luxury and true adventure aren’t defined only by where you travel—they live in where you rest your head, the food at your table, and the quiet comfort waiting for you after the trail ends.
+              </p>
+              <p class="text-base sm:text-lg text-charcoal-900 leading-relaxed font-normal">
+                Founded by Kingsley alongside <a href="https://wolfgunexpedition.com" target="_blank" rel="noopener noreferrer" class="font-semibold underline decoration-gold-500 hover:text-forest-800">Wolfgun Expedition</a>, <strong>Wolfgun Outposts</strong> was built to bridge that gap. We don’t just guide you through East Africa’s wild landscapes; we curate the sanctuaries, private stays, and prime territory that turn an unforgettable journey into a true home away from home.”
+              </p>
+            </div>
+
+            <!-- Brand Ecosystem & Social Links -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a
+                href="https://wolfgunexpedition.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-5 py-3 rounded-xl bg-forest-800 hover:bg-forest-700 text-sand-50 font-semibold text-xs sm:text-sm transition-colors inline-flex items-center gap-2"
+              >
+                <span>Parent Brand: wolfgunexpedition.com</span>
+                <span class="text-gold-400">↗</span>
+              </a>
+              <a
+                href="https://instagram.com/kings.builds"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-5 py-3 rounded-xl bg-sand-100 hover:border-gold-500 border border-sand-300 text-charcoal-950 font-semibold text-xs sm:text-sm transition-colors inline-flex items-center gap-2"
+              >
+                <span>Instagram: @kings.builds</span>
+                <span class="text-gold-600">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Visual Column -->
+          <div class="lg:col-span-5">
+            <div class="rounded-3xl overflow-hidden border border-sand-200 shadow-xl bg-forest-900 relative">
+              <img
+                src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=85"
+                onerror="this.onerror=null;this.src='https://placehold.co/900x1000/1F2E27/B89352?text=East+African+Highlands';"
+                alt="Misty mountain forest sanctuary in Tanzania"
+                class="w-full h-[420px] sm:h-[480px] object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950/80 via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 text-sand-50">
+                <p class="text-[11px] uppercase tracking-[0.2em] text-gold-400 font-semibold">East Africa • Bush to Coast</p>
+                <p class="font-serif text-2xl font-semibold mt-0.5">Curated by Kingsley</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Trust Pillars -->
+        <div class="mt-20 pt-16 border-t border-sand-200">
+          <div class="max-w-2xl mb-10">
+            <span class="text-xs font-bold uppercase tracking-[0.22em] text-gold-600">How We Curate</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-charcoal-950 mt-1">Three Pillars of Wolfgun Outposts</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <div class="p-7 rounded-2xl bg-sand-100 border border-sand-200 space-y-3">
+              <span class="inline-block font-serif text-2xl font-bold text-gold-600">01.</span>
+              <h3 class="font-serif text-2xl font-bold text-charcoal-950">01. Expedition-Tested Locations</h3>
+              <p class="text-sm text-charcoal-700 leading-relaxed">
+                Every forest retreat, savannah camp, and coastal villa is positioned along real safari and travel routes vetted by Wolfgun Expedition.
+              </p>
+            </div>
+
+            <div class="p-7 rounded-2xl bg-sand-100 border border-sand-200 space-y-3">
+              <span class="inline-block font-serif text-2xl font-bold text-gold-600">02.</span>
+              <h3 class="font-serif text-2xl font-bold text-charcoal-950">02. Curated Comfort &amp; Culinary Soul</h3>
+              <p class="text-sm text-charcoal-700 leading-relaxed">
+                We prioritize restorative suites, warm architectural materials, and memorable local hospitality that turns every night into a true homecoming.
+              </p>
+            </div>
+
+            <div class="p-7 rounded-2xl bg-sand-100 border border-sand-200 space-y-3">
+              <span class="inline-block font-serif text-2xl font-bold text-gold-600">03.</span>
+              <h3 class="font-serif text-2xl font-bold text-charcoal-950">03. Transparent Ground Verification</h3>
+              <p class="text-sm text-charcoal-700 leading-relaxed">
+                No inflated placeholders or unverified promises. Sample listings are clearly badged while live owner rates and availability are confirmed directly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- VIEW 4: ENQUIRE (DIRECT CONCIERGE & BOOKING BRIEF)                  -->
+    <!-- =================================================================== -->
+    <section id="view-enquire" class="view-panel hidden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+        <div class="max-w-2xl">
+          <span class="text-xs font-bold uppercase tracking-[0.22em] text-gold-600">Direct Concierge</span>
+          <h1 class="font-serif text-4xl sm:text-5xl font-bold text-charcoal-950 mt-2">
+            Enquire &amp; Request Rates
+          </h1>
+          <p class="text-sm sm:text-base text-charcoal-700 mt-3 leading-relaxed">
+            Build your sanctuary or territory brief below to dispatch immediately to Kingsley via WhatsApp or Email.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Left Form / Generated Brief Card -->
+          <div class="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-sand-100 border border-sand-200 shadow-xs">
+            <form id="concierge-form" novalidate onsubmit="generateConciergeBrief(event)" class="space-y-5">
+              <div>
+                <label for="input-name" class="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-2">Full Name *</label>
+                <input
+                  type="text"
+                  id="input-name"
+                  required
+                  placeholder="e.g., Amara Mkwawa"
+                  class="w-full px-4 py-3.5 rounded-xl bg-sand-50 border border-sand-300 text-charcoal-950 text-sm focus:outline-none focus:border-gold-600"
+                />
+                <p id="err-name" class="hidden text-xs text-red-700 font-medium mt-1.5">Please enter your full name.</p>
+              </div>
+
+              <div>
+                <label for="input-contact" class="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-2">Email or WhatsApp Phone *</label>
+                <input
+                  type="text"
+                  id="input-contact"
+                  required
+                  placeholder="e.g., you@domain.com or +255 7XX XXX XXX"
+                  class="w-full px-4 py-3.5 rounded-xl bg-sand-50 border border-sand-300 text-charcoal-950 text-sm focus:outline-none focus:border-gold-600"
+                />
+                <p id="err-contact" class="hidden text-xs text-red-700 font-medium mt-1.5">Please enter your email address or phone number.</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="input-sanctuary" class="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-2">Preferred Sanctuary *</label>
+                  <select
+                    id="input-sanctuary"
+                    class="w-full px-4 py-3.5 rounded-xl bg-sand-50 border border-sand-300 text-charcoal-950 text-sm focus:outline-none focus:border-gold-600"
+                  >
+                    <option value="Ngurdoto Crater — Colobus Sanctuary (Arusha)">Ngurdoto Crater — Colobus Sanctuary</option>
+                    <option value="Ngorongoro Highland Forest Retreat (Ngorongoro)">Ngorongoro Highland Forest Retreat</option>
+                    <option value="Serengeti Savannah Outpost (Serengeti)">Serengeti Savannah Outpost</option>
+                    <option value="Zanzibar Beach Cliff Lodge (Paje / Michamvi)">Zanzibar Beach Cliff Lodge</option>
+                    <option value="Dar es Salaam Sea-View Villa & BNB (Msasani / Oysterbay)">Dar es Salaam Sea-View Villa &amp; BNB</option>
+                    <option value="Custom Territory / Multi-Stop Safari Request">Custom Territory Request</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="input-dates" class="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-2">Travel Dates / Guests</label>
+                  <input
+                    type="text"
+                    id="input-dates"
+                    placeholder="e.g., Aug 2027 • 2 Guests"
+                    class="w-full px-4 py-3.5 rounded-xl bg-sand-50 border border-sand-300 text-charcoal-950 text-sm focus:outline-none focus:border-gold-600"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="input-notes" class="block text-xs font-bold uppercase tracking-wider text-charcoal-800 mb-2">Notes &amp; Preferences</label>
+                <textarea
+                  id="input-notes"
+                  rows="3"
+                  placeholder="Share any safari pairing needs, private dining requests, or land/property questions..."
+                  class="w-full px-4 py-3.5 rounded-xl bg-sand-50 border border-sand-300 text-charcoal-950 text-sm focus:outline-none focus:border-gold-600"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full py-4 px-6 rounded-xl bg-forest-800 hover:bg-forest-700 text-sand-50 border border-gold-500/40 font-bold text-sm sm:text-base transition-all shadow-md"
+              >
+                Generate Concierge Brief
+              </button>
+            </form>
+
+            <!-- Formatted Brief Output Panel (Shown after submit) -->
+            <div id="brief-result" class="hidden space-y-5">
+              <div class="flex items-center justify-between border-b border-sand-300 pb-4">
+                <div>
+                  <span class="text-[11px] font-bold uppercase tracking-widest text-gold-600">Concierge Brief Ready</span>
+                  <h2 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal-950">Dispatch Your Request</h2>
+                </div>
+                <button type="button" onclick="resetConciergeForm()" class="text-xs font-semibold text-forest-800 hover:underline">
+                  Edit Brief
+                </button>
+              </div>
+
+              <pre id="brief-preview-box" class="p-4 rounded-2xl bg-sand-50 border border-sand-300 text-xs sm:text-sm text-charcoal-900 whitespace-pre-wrap font-sans leading-relaxed"></pre>
+
+              <!-- Two Instant Dispatch Actions + One-Click Copy -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                <a
+                  id="brief-wa-link"
+                  href="https://wa.me/255742098355"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="py-3.5 px-4 rounded-xl bg-[#1F7A4C] hover:bg-[#19663F] text-white font-bold text-xs sm:text-sm text-center transition-colors shadow-sm flex items-center justify-center gap-2"
+                >
+                  <span>Send via WhatsApp (+255 742 098 355)</span>
+                </a>
+
+                <a
+                  id="brief-mail-link"
+                  href="mailto:kingsleywolfgun9@gmail.com"
+                  class="py-3.5 px-4 rounded-xl bg-forest-800 hover:bg-forest-700 text-sand-50 border border-gold-500/40 font-bold text-xs sm:text-sm text-center transition-colors shadow-sm flex items-center justify-center gap-2"
+                >
+                  <span>Send via Email (kingsleywolfgun9@gmail.com)</span>
+                </a>
+              </div>
+
+              <div class="flex items-center justify-between pt-1">
+                <button
+                  type="button"
+                  onclick="copyBriefToClipboard()"
+                  class="px-4 py-2.5 rounded-xl bg-sand-50 hover:border-gold-500 border border-sand-300 text-charcoal-900 font-semibold text-xs transition-colors"
+                >
+                  Copy Brief Text
+                </button>
+                <span id="copy-feedback" class="text-xs font-semibold text-forest-800 opacity-0 transition-opacity">
+                  Copied to clipboard ✓
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Direct Contact Directory -->
+          <div class="lg:col-span-5 space-y-5">
+            <div class="p-6 sm:p-7 rounded-3xl bg-forest-800 text-sand-50 border border-gold-500/35 space-y-5 shadow-md">
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gold-400">Direct Desk</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold mt-1">Kingsley’s Concierge Line</h2>
+                <p class="text-xs sm:text-sm text-sand-200 mt-1.5 leading-relaxed">
+                  Reach out directly for verified rates, private stays, or combined Wolfgun Expedition itineraries.
+                </p>
+              </div>
+
+              <div class="space-y-3 text-xs sm:text-sm">
+                <a
+                  href="https://wa.me/255742098355?text=Hello%20Kingsley%2C%20I%20would%20like%20to%20enquire%20about%20Wolfgun%20Outposts."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-between p-4 rounded-xl bg-forest-900/90 border border-gold-500/35 hover:border-gold-400 transition-colors"
+                >
+                  <div>
+                    <span class="block text-[10px] uppercase tracking-wider text-gold-400 font-semibold">WhatsApp Direct</span>
+                    <span class="font-semibold text-sand-50">+255 742 098 355</span>
+                  </div>
+                  <span class="text-gold-400 font-bold">Chat ↗</span>
+                </a>
+
+                <a
+                  href="mailto:kingsleywolfgun9@gmail.com?subject=Wolfgun%20Outposts%20Enquiry"
+                  class="flex items-center justify-between p-4 rounded-xl bg-forest-900/90 border border-sand-50/15 hover:border-gold-400 transition-colors"
+                >
+                  <div class="truncate pr-2">
+                    <span class="block text-[10px] uppercase tracking-wider text-gold-400 font-semibold">Email Desk</span>
+                    <span class="font-semibold text-sand-50">kingsleywolfgun9@gmail.com</span>
+                  </div>
+                  <span class="text-gold-400 font-bold shrink-0">Email ↗</span>
+                </a>
+
+                <a
+                  href="https://instagram.com/kings.builds"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-between p-4 rounded-xl bg-forest-900/90 border border-sand-50/15 hover:border-gold-400 transition-colors"
+                >
+                  <div>
+                    <span class="block text-[10px] uppercase tracking-wider text-gold-400 font-semibold">Instagram</span>
+                    <span class="font-semibold text-sand-50">@kings.builds</span>
+                  </div>
+                  <span class="text-gold-400 font-bold">Follow ↗</span>
+                </a>
+
+                <a
+                  href="https://wolfgunexpedition.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-between p-4 rounded-xl bg-forest-900/90 border border-sand-50/15 hover:border-gold-400 transition-colors"
+                >
+                  <div>
+                    <span class="block text-[10px] uppercase tracking-wider text-gold-400 font-semibold">Expedition Ecosystem</span>
+                    <span class="font-semibold text-sand-50">wolfgunexpedition.com</span>
+                  </div>
+                  <span class="text-gold-400 font-bold">Visit ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- SANCTUARY DETAIL MODAL (INSPECT SANCTUARY)                            -->
+  <!-- ===================================================================== -->
+  <div id="sanctuary-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-stay-title">
+    <div onclick="closeInspectModal()" class="fixed inset-0 bg-charcoal-950/80 backdrop-blur-sm"></div>
+    <div class="relative z-10 w-full max-w-2xl rounded-3xl bg-sand-50 border border-sand-200 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+      <!-- Image Header -->
+      <div class="relative h-60 sm:h-72 bg-forest-900 shrink-0">
+        <img id="modal-stay-img" src="" alt="" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950/75 via-transparent to-charcoal-950/25"></div>
+        <button
+          type="button"
+          onclick="closeInspectModal()"
+          aria-label="Close sanctuary details"
+          class="absolute top-4 right-4 p-2.5 rounded-xl bg-charcoal-950/75 hover:bg-charcoal-950 text-sand-50 transition-colors"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <span class="absolute top-4 left-4 px-3 py-1 rounded-md bg-gold-500 text-charcoal-950 text-[10px] font-bold uppercase tracking-wider shadow-xs">
+          SAMPLE LISTING • VERIFYING RATES
+        </span>
+        <span id="modal-stay-region" class="absolute bottom-4 left-4 px-3 py-1 rounded-lg bg-forest-900/90 border border-gold-500/40 text-gold-300 text-xs font-semibold"></span>
+      </div>
+
+      <!-- Modal Scrollable Content -->
+      <div class="p-6 sm:p-8 overflow-y-auto space-y-5">
+        <div>
+          <p id="modal-stay-location" class="text-xs font-bold uppercase tracking-[0.18em] text-gold-600"></p>
+          <h3 id="modal-stay-title" class="font-serif text-2xl sm:text-3xl font-bold text-charcoal-950 mt-1"></h3>
+        </div>
+
+        <p id="modal-stay-desc" class="text-sm sm:text-base text-charcoal-700 leading-relaxed"></p>
+
+        <div class="p-4 rounded-2xl bg-sand-100 border border-sand-200 space-y-2.5">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-charcoal-800 block">Sanctuary Highlights &amp; Amenities</span>
+          <ul id="modal-stay-amenities" class="space-y-2 text-xs sm:text-sm text-charcoal-800"></ul>
+        </div>
+
+        <div class="pt-2 flex flex-col sm:flex-row gap-3">
+          <a
+            id="modal-wa-cta"
+            href="https://wa.me/255742098355"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex-1 py-3.5 px-5 rounded-xl bg-forest-800 hover:bg-forest-700 text-sand-50 border border-gold-500/40 font-bold text-sm text-center transition-colors shadow-sm"
+          >
+            Enquire on WhatsApp ↗
+          </a>
+          <button
+            type="button"
+            id="modal-form-cta"
+            class="py-3.5 px-5 rounded-xl bg-sand-100 hover:border-gold-500 border border-sand-300 text-charcoal-950 font-semibold text-sm transition-colors"
+          >
+            Request Rate Sheet
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- PRIVACY POLICY & TRANSPARENCY MODAL                                   -->
+  <!-- ===================================================================== -->
+  <div id="privacy-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title">
+    <div onclick="closePrivacyModal()" class="fixed inset-0 bg-charcoal-950/80 backdrop-blur-sm"></div>
+    <div class="relative z-10 w-full max-w-xl rounded-3xl bg-sand-50 border border-sand-200 shadow-2xl p-6 sm:p-8 space-y-5 max-h-[85vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-sand-200 pb-4">
+        <h3 id="privacy-modal-title" class="font-serif text-2xl sm:text-3xl font-bold text-charcoal-950">Privacy &amp; Listing Transparency</h3>
+        <button type="button" onclick="closePrivacyModal()" aria-label="Close privacy policy" class="p-2 rounded-xl border border-sand-300 bg-sand-100 text-charcoal-950">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-sm text-charcoal-700 leading-relaxed">
+        <div>
+          <h4 class="font-serif text-lg font-bold text-charcoal-950">Sample Listing Integrity</h4>
+          <p class="mt-1">
+            All properties currently displayed on Wolfgun Outposts carry a <strong>SAMPLE LISTING • VERIFYING RATES</strong> badge while partner contracts, seasonal tariffs, and direct availability calendars are finalized on the ground in Tanzania. No speculative prices are published.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-serif text-lg font-bold text-charcoal-950">Client Privacy &amp; Direct Communication</h4>
+          <p class="mt-1">
+            Information entered into our Concierge Brief is formatted locally in your browser so you can transmit it directly to Kingsley via WhatsApp (<strong>+255 742 098 355</strong>) or Email (<strong>kingsleywolfgun9@gmail.com</strong>). We never sell or syndicate guest enquiry details.
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-2">
+        <button type="button" onclick="closePrivacyModal()" class="w-full py-3 rounded-xl bg-forest-800 text-sand-50 font-semibold text-sm">
+          Acknowledge &amp; Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- FLOATING WHATSAPP CONCIERGE BUTTON                                    -->
+  <!-- ===================================================================== -->
+  <div class="fixed bottom-5 right-5 z-30">
+    <a
+      href="https://wa.me/255742098355?text=Hello%20Kingsley%2C%20I%20would%20like%20to%20enquire%20about%20Wolfgun%20Outposts."
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="WhatsApp Concierge"
+      class="flex items-center gap-2.5 px-4 py-3.5 rounded-full bg-forest-800 hover:bg-forest-700 text-sand-50 shadow-2xl border border-gold-500/50 transition-transform hover:scale-105"
+    >
+      <span class="w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse"></span>
+      <span class="text-xs sm:text-sm font-semibold tracking-wide">WhatsApp Concierge</span>
+    </a>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- EDITORIAL FOOTER                                                      -->
+  <!-- ===================================================================== -->
+  <footer class="bg-sand-100 border-t border-sand-200 pt-14 pb-24 sm:pb-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-sand-200">
+        <!-- Brand Column -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-forest-800 flex items-center justify-center">
+              <svg class="w-6 h-6" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="4" y="4" width="32" height="32" rx="4" stroke="#B89352" stroke-width="1.3" />
+                <text x="20" y="24" text-anchor="middle" fill="#F7F4EE" font-family="'Cormorant Garamond', Georgia, serif" font-weight="700" font-size="14">WO</text>
+              </svg>
+            </div>
+            <div>
+              <span class="font-serif text-lg font-bold tracking-wider text-charcoal-950 block leading-none">WOLFGUN OUTPOSTS</span>
+              <span class="text-[9px] uppercase tracking-[0.22em] text-gold-600 font-semibold block mt-0.5">By Wolfgun Expedition</span>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-charcoal-700 leading-relaxed max-w-sm">
+            Where the trail ends, true luxury begins. Curated sanctuaries and expedition hospitality across Tanzania’s Northern Circuit and Swahili Coast.
+          </p>
+          <p class="text-[11px] text-charcoal-700 bg-sand-50 border border-sand-200 rounded-xl px-3.5 py-2.5 inline-block">
+            <strong>Transparency Notice:</strong> Portfolio entries currently carry <em>Sample Listing</em> badges while direct partner rates are verified.
+          </p>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="md:col-span-3 space-y-3">
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-charcoal-950 block">Navigation</span>
+          <ul class="space-y-2 text-xs sm:text-sm text-charcoal-700">
+            <li><button type="button" onclick="switchView('home')" class="hover:text-gold-600 transition-colors">Home</button></li>
+            <li><button type="button" onclick="switchView('stays')" class="hover:text-gold-600 transition-colors">Stays &amp; Territory</button></li>
+            <li><button type="button" onclick="switchView('about')" class="hover:text-gold-600 transition-colors">About Kingsley</button></li>
+            <li><button type="button" onclick="switchView('enquire')" class="hover:text-gold-600 transition-colors">Enquire &amp; Concierge</button></li>
+            <li><button type="button" onclick="openPrivacyModal()" class="hover:text-gold-600 transition-colors">Privacy Policy</button></li>
+          </ul>
+        </div>
+
+        <!-- Direct Contact & Ecosystem -->
+        <div class="md:col-span-4 space-y-3">
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-charcoal-950 block">Concierge &amp; Ecosystem</span>
+          <ul class="space-y-2 text-xs sm:text-sm text-charcoal-700">
+            <li>
+              <a href="https://wa.me/255742098355" target="_blank" rel="noopener noreferrer" class="hover:text-gold-600 transition-colors">
+                WhatsApp: +255 742 098 355 ↗
+              </a>
+            </li>
+            <li>
+              <a href="mailto:kingsleywolfgun9@gmail.com" class="hover:text-gold-600 transition-colors">
+                Email: kingsleywolfgun9@gmail.com ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/kings.builds" target="_blank" rel="noopener noreferrer" class="hover:text-gold-600 transition-colors">
+                Instagram: @kings.builds ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://wolfgunexpedition.com" target="_blank" rel="noopener noreferrer" class="hover:text-gold-600 transition-colors font-semibold text-forest-800">
+                Parent Brand: wolfgunexpedition.com ↗
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-charcoal-700">
+        <p>© 2026 Wolfgun Outposts • A Wolfgun Expedition Brand. All rights reserved.</p>
+        <p>Arusha • Ngorongoro • Serengeti • Zanzibar • Dar es Salaam</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- INTERACTIVE JAVASCRIPT                                                -->
+  <!-- ===================================================================== -->
+  <script>
+    // Curated 5-Property Portfolio Data
+    const SANCTUARIES = [
+      {
+        id: 'ngurdoto-colobus',
+        title: 'Ngurdoto Crater — Colobus Sanctuary',
+        location: 'Arusha National Park, Tanzania',
+        region: 'Northern Circuit',
+        image: 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=80',
+        highlights: [
+          'Black-and-White Colobus monkey forest habitat',
+          'Volcanic crater rim trails',
+          'Private coffee estate veranda'
+        ],
+        description: 'Tucked into the emerald montane rainforest bordering Ngurdoto Crater in Arusha National Park, this sanctuary immerses guests in misty canopy mornings, troop sightings of Black-and-White Colobus monkeys, and tranquil coffee-estate verandas.',
+        amenities: [
+          'Black-and-White Colobus monkey forest habitat right off the timber deck',
+          'Guided volcanic crater rim trails & Mount Meru foothill walks',
+          'Private coffee estate veranda with farm-to-table highland dining',
+          'Seamless 45-minute transfer from Kilimanjaro International Airport (JRO)'
+        ]
+      },
+      {
+        id: 'ngorongoro-highland',
+        title: 'Ngorongoro Highland Forest Retreat',
+        location: 'Ngorongoro Conservation Area, Tanzania',
+        region: 'Northern Circuit',
+        image: 'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80',
+        highlights: [
+          'Ancient highland cedar & mist forest',
+          'Stone fireplace suites',
+          'Crater descent access'
+        ],
+        description: 'Perched along the cool, mist-draped ridges of the Ngorongoro Conservation Area, this highland retreat pairs hand-dressed stone suites and crackling hearths with early-morning access down into the Ngorongoro Crater floor.',
+        amenities: [
+          'Surrounded by ancient highland cedar & mist forest',
+          'Spacious stone fireplace suites with wool throws and deep soaking tubs',
+          'Priority early-morning crater descent access with Wolfgun Expedition',
+          'Private cellar dining and local highland organic produce'
+        ]
+      },
+      {
+        id: 'serengeti-savannah',
+        title: 'Serengeti Savannah Outpost',
+        location: 'Central & Northern Serengeti, Tanzania',
+        region: 'Northern Circuit',
+        image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80',
+        highlights: [
+          'Endless plains wildlife migration corridor',
+          'Canvas-and-timber luxury suites',
+          'Bush dining under stars'
+        ],
+        description: 'Set beneath flat-topped acacias overlooking the golden plains of the Serengeti, this outpost places you directly along the seasonal wildlife migration corridor without sacrificing architectural warmth or restful sleep.',
+        amenities: [
+          'Positioned along the endless plains wildlife migration corridor',
+          'Canvas-and-timber luxury suites with wrap-around savannah viewing decks',
+          'Lantern-lit bush dining under the Southern Cross',
+          'Dedicated 4x4 photographic safari vehicles via Wolfgun Expedition'
+        ]
+      },
+      {
+        id: 'zanzibar-cliff',
+        title: 'Zanzibar Beach Cliff Lodge',
+        location: 'Paje / Michamvi Peninsula, Zanzibar',
+        region: 'Coast & Islands',
+        image: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1200&q=80',
+        highlights: [
+          'Coral cliff infinity terrace',
+          'Private reef access',
+          'Swahili coastal architecture'
+        ],
+        description: 'Elevated above the luminous turquoise tides of the Michamvi and Paje coastline, this lodge blends hand-carved Swahili coral stone and teak craftsmanship with effortless Indian Ocean serenity after days in the bush.',
+        amenities: [
+          'Elevated coral cliff infinity terrace overlooking Indian Ocean tides',
+          'Private reef access for low-tide walks, snorkeling, and dhow sails',
+          'Authentic Swahili coastal architecture with open-air sea breezes',
+          'Fresh Swahili spice-route seafood and sunset lounge'
+        ]
+      },
+      {
+        id: 'dar-seaview',
+        title: 'Dar es Salaam Sea-View Villa & BNB',
+        location: 'Msasani Peninsula / Oysterbay, Dar es Salaam',
+        region: 'Coast & Islands',
+        image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80',
+        highlights: [
+          'Panoramic Indian Ocean infinity pool',
+          'Private chef dining',
+          'Executive city-to-coast sanctuary'
+        ],
+        description: 'Located on Dar es Salaam’s prestigious Msasani Peninsula, this sea-facing villa and boutique BNB offers executives, diplomats, and discerning travelers a quiet coastal haven with sunset infinity pool views.',
+        amenities: [
+          'Panoramic Indian Ocean infinity pool with sunset horizon deck',
+          'Optional private chef dining featuring coastal and international menus',
+          'Executive city-to-coast sanctuary with high-speed connectivity and privacy',
+          'Minutes from Oysterbay coastal promenades and diplomatic quarters'
+        ]
+      }
+    ];
+
+    let activeRegion = 'All';
+
+    // Resilient SVG fallback data URI in case external image fails
+    function getFallbackImage(title) {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1F2E27"/>
+            <stop offset="100%" stop-color="#141513"/>
+          </linearGradient>
+        </defs>
+        <rect width="1200" height="800" fill="url(#g)"/>
+        <rect x="40" y="40" width="1120" height="720" rx="16" fill="none" stroke="#B89352" stroke-opacity="0.45" stroke-width="2"/>
+        <text x="600" y="385" text-anchor="middle" fill="#B89352" font-family="Georgia, serif" font-size="22" letter-spacing="6">WOLFGUN OUTPOSTS</text>
+        <text x="600" y="435" text-anchor="middle" fill="#F7F4EE" font-family="Georgia, serif" font-size="34">${title.replace(/&/g, '&amp;')}</text>
+      </svg>`;
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    // View Switcher
+    function switchView(viewId) {
+      document.querySelectorAll('.view-panel').forEach(el => el.classList.add('hidden'));
+      const target = document.getElementById(`view-${viewId}`);
+      if (target) {
+        target.classList.remove('hidden');
+      }
+
+      // Update Desktop Nav Active State
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        const isCurrent = btn.getAttribute('data-nav') === viewId;
+        btn.className = isCurrent
+          ? 'nav-btn px-4 py-2.5 rounded-xl text-sm font-bold bg-sand-100 text-forest-800 border border-gold-500/40 transition-colors'
+          : 'nav-btn px-4 py-2.5 rounded-xl text-sm font-medium text-charcoal-800 hover:bg-sand-100/80 transition-colors';
+      });
+
+      // Update Mobile Nav Active State
+      document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+        const isCurrent = btn.getAttribute('data-mobile-nav') === viewId;
+        btn.className = isCurrent
+          ? 'mobile-nav-btn w-full text-left px-4 py-3.5 rounded-xl text-base font-bold bg-sand-100 text-forest-800 border border-gold-500/40'
+          : 'mobile-nav-btn w-full text-left px-4 py-3.5 rounded-xl text-base font-medium text-charcoal-900 hover:bg-sand-100';
+      });
+
+      toggleDrawer(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Mobile Drawer Toggle
+    function toggleDrawer(open) {
+      const drawer = document.getElementById('mobile-drawer');
+      if (open) {
+        drawer.classList.remove('hidden');
+        document.body.classList.add('modal-open');
+      } else {
+        drawer.classList.add('hidden');
+        document.body.classList.remove('modal-open');
+      }
+    }
+
+    // Render Portfolio Cards
+    function renderPortfolio(region = 'All') {
+      const grid = document.getElementById('portfolio-grid');
+      if (!grid) return;
+
+      const list = region === 'All'
+        ? SANCTUARIES
+        : SANCTUARIES.filter(item => item.region === region);
+
+      grid.innerHTML = list.map((stay, idx) => {
+        // Asymmetric magazine span on desktop for the first featured card when viewing All
+        const spanClass = (region === 'All' && idx === 0) ? 'md:col-span-2' : '';
+        const imgHeight = (region === 'All' && idx === 0) ? 'h-72 sm:h-96' : 'h-64 sm:h-72';
+        const highlightsHtml = stay.highlights
+          .map(h => `<li class="flex items-start gap-2"><span class="text-gold-600 font-bold">•</span><span>${h}</span></li>`)
+          .join('');
+
+        return `
+          <article class="${spanClass} group rounded-3xl bg-sand-100 border border-sand-200 hover:border-gold-500/70 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300">
+            <div>
+              <!-- Image Container -->
+              <div onclick="openInspectModal('${stay.id}')" class="relative ${imgHeight} overflow-hidden bg-forest-900 cursor-pointer">
+                <img
+                  src="${stay.image}"
+                  onerror="this.onerror=null;this.src=getFallbackImage('${stay.title.replace(/'/g, "\\'")}');"
+                  alt="${stay.title} — ${stay.location}"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950/75 via-transparent to-charcoal-950/20"></div>
+
+                <!-- Sample Listing Badge -->
+                <span class="absolute top-4 left-4 px-3 py-1 rounded-md bg-gold-500 text-charcoal-950 text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                  SAMPLE LISTING • VERIFYING RATES
+                </span>
+
+                <!-- Region Pill -->
+                <span class="absolute bottom-4 left-4 px-3 py-1 rounded-lg bg-forest-900/90 border border-gold-500/40 text-gold-300 text-xs font-semibold backdrop-blur-xs">
+                  ${stay.region}
+                </span>
+              </div>
+
+              <!-- Card Editorial Body -->
+              <div class="p-6 sm:p-8 space-y-3">
+                <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold-600">
+                  ${stay.location}
+                </p>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal-950 leading-snug">
+                  ${stay.title}
+                </h2>
+                <ul class="pt-1 space-y-1.5 text-xs sm:text-sm text-charcoal-800">
+                  ${highlightsHtml}
+                </ul>
+              </div>
+            </div>
+
+            <!-- Action Bar -->
+            <div class="px-6 sm:px-8 pb-6 sm:pb-8 pt-2 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onclick="openInspectModal('${stay.id}')"
+                class="flex-1 py-3.5 px-5 rounded-xl bg-forest-800 hover:bg-forest-700 text-sand-50 border border-gold-500/40 font-semibold text-sm transition-colors flex items-center justify-center gap-2"
+              >
+                <span>Inspect Sanctuary</span>
+                <span class="text-gold-400">→</span>
+              </button>
+              <button
+                type="button"
+                onclick="prefillEnquiry('${stay.id}')"
+                class="py-3.5 px-4 rounded-xl bg-sand-50 hover:border-gold-500 border border-sand-300 text-charcoal-950 font-semibold text-xs sm:text-sm transition-colors"
+              >
+                Request Rates
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // Filter Portfolio Tabs
+    function filterPortfolio(region) {
+      activeRegion = region;
+      document.querySelectorAll('.region-tab').forEach(tab => {
+        const isSelected = tab.getAttribute('data-region') === region;
+        tab.className = isSelected
+          ? 'region-tab px-4 py-3 rounded-xl text-xs sm:text-sm font-bold bg-forest-800 text-sand-50 border border-gold-500/40 shadow-xs transition-all'
+          : 'region-tab px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-sand-100 text-charcoal-800 border border-sand-200 hover:border-gold-500 transition-all';
+      });
+      renderPortfolio(region);
+    }
+
+    // Jump from Home Preview Strip to Stays + Inspect Modal
+    function jumpToStay(stayId) {
+      switchView('stays');
+      filterPortfolio('All');
+      setTimeout(() => openInspectModal(stayId), 150);
+    }
+
+    // Open Inspect Sanctuary Detail Modal
+    function openInspectModal(stayId) {
+      const stay = SANCTUARIES.find(s => s.id === stayId);
+      if (!stay) return;
+
+      const imgEl = document.getElementById('modal-stay-img');
+      imgEl.src = stay.image;
+      imgEl.alt = stay.title;
+      imgEl.onerror = function() {
+        this.onerror = null;
+        this.src = getFallbackImage(stay.title);
+      };
+
+      document.getElementById('modal-stay-region').textContent = stay.region;
+      document.getElementById('modal-stay-location').textContent = stay.location;
+      document.getElementById('modal-stay-title').textContent = stay.title;
+      document.getElementById('modal-stay-desc').textContent = stay.description;
+      document.getElementById('modal-stay-amenities').innerHTML = stay.amenities
+        .map(a => `<li class="flex items-start gap-2.5"><span class="text-gold-600 font-bold">◆</span><span>${a}</span></li>`)
+        .join('');
+
+      // Pre-filled WhatsApp Link with exact property name
+      const waMessage = `Hello Kingsley, I would like to enquire about availability and verified rates for ${stay.title} (${stay.location}) on Wolfgun Outposts.`;
+      document.getElementById('modal-wa-cta').href = `https://wa.me/255742098355?text=${encodeURIComponent(waMessage)}`;
+
+      // Form button handler
+      document.getElementById('modal-form-cta').onclick = () => {
+        closeInspectModal();
+        prefillEnquiry(stay.id);
+      };
+
+      document.getElementById('sanctuary-modal').classList.remove('hidden');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeInspectModal() {
+      document.getElementById('sanctuary-modal').classList.add('hidden');
+      document.body.classList.remove('modal-open');
+    }
+
+    // Pre-fill Enquire View with chosen Sanctuary
+    function prefillEnquiry(stayId) {
+      const stay = SANCTUARIES.find(s => s.id === stayId);
+      const select = document.getElementById('input-sanctuary');
+      if (stay && select) {
+        const match = Array.from(select.options).find(opt => opt.value.includes(stay.title));
+        if (match) select.value = match.value;
+      }
+      resetConciergeForm();
+      switchView('enquire');
+    }
+
+    // Generate Formatted Concierge Brief
+    function generateConciergeBrief(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('input-name').value.trim();
+      const contact = document.getElementById('input-contact').value.trim();
+      const sanctuary = document.getElementById('input-sanctuary').value;
+      const dates = document.getElementById('input-dates').value.trim() || 'Flexible / To be discussed';
+      const notes = document.getElementById('input-notes').value.trim() || 'Requesting verified rates & availability.';
+
+      // Reset errors
+      document.getElementById('err-name').classList.add('hidden');
+      document.getElementById('err-contact').classList.add('hidden');
+
+      let hasError = false;
+      if (!name) {
+        document.getElementById('err-name').classList.remove('hidden');
+        hasError = true;
+      }
+      if (!contact) {
+        document.getElementById('err-contact').classList.remove('hidden');
+        hasError = true;
+      }
+      if (hasError) return;
+
+      const briefText = [
+        'WOLFGUN OUTPOSTS — CONCIERGE BRIEF',
+        '----------------------------------',
+        `Guest Name: ${name}`,
+        `Contact: ${contact}`,
+        `Preferred Sanctuary: ${sanctuary}`,
+        `Travel Dates / Guests: ${dates}`,
+        `Notes: ${notes}`
+      ].join('\n');
+
+      document.getElementById('brief-preview-box').textContent = briefText;
+
+      // Wire WhatsApp and Mailto dispatch links
+      document.getElementById('brief-wa-link').href = `https://wa.me/255742098355?text=${encodeURIComponent(briefText)}`;
+      const mailSubject = `Wolfgun Outposts Enquiry — ${sanctuary}`;
+      document.getElementById('brief-mail-link').href = `mailto:kingsleywolfgun9@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(briefText)}`;
+
+      document.getElementById('concierge-form').classList.add('hidden');
+      document.getElementById('brief-result').classList.remove('hidden');
+    }
+
+    function resetConciergeForm() {
+      document.getElementById('concierge-form').classList.remove('hidden');
+      document.getElementById('brief-result').classList.add('hidden');
+    }
+
+    // One-Click Copy Brief using document.execCommand('copy')
+    function copyBriefToClipboard() {
+      const text = document.getElementById('brief-preview-box').textContent;
+      const tempArea = document.createElement('textarea');
+      tempArea.value = text;
+      tempArea.setAttribute('readonly', '');
+      tempArea.style.position = 'fixed';
+      tempArea.style.left = '-9999px';
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      try {
+        document.execCommand('copy');
+        const feedback = document.getElementById('copy-feedback');
+        feedback.classList.remove('opacity-0');
+        setTimeout(() => feedback.classList.add('opacity-0'), 2500);
+      } catch (err) {
+        // Silent fallback
+      }
+      document.body.removeChild(tempArea);
+    }
+
+    // Privacy Modal Controls
+    function openPrivacyModal() {
+      document.getElementById('privacy-modal').classList.remove('hidden');
+      document.body.classList.add('modal-open');
+    }
+
+    function closePrivacyModal() {
+      document.getElementById('privacy-modal').classList.add('hidden');
+      document.body.classList.remove('modal-open');
+    }
+
+    // Keyboard Escape Support for Modals & Drawer
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeInspectModal();
+        closePrivacyModal();
+        toggleDrawer(false);
+      }
+    });
+
+    // Initialize Application
+    window.addEventListener('DOMContentLoaded', () => {
+      filterPortfolio('All');
+      switchView('home');
+    });
+  </script>
+</body>
+</html>
